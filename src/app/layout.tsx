@@ -79,13 +79,12 @@ export default function RootLayout({
         {/* Preload critical resources */}
         <link
           rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
           as="style"
-          onLoad="this.onload=null;this.rel='stylesheet'"
         />
         <noscript>
           <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
           />
         </noscript>
@@ -107,7 +106,7 @@ export default function RootLayout({
           Aller au contenu principal
         </a>
 
-        {/* Google Analytics with consent management */}
+        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
           strategy="afterInteractive"
@@ -143,7 +142,7 @@ export default function RootLayout({
         <main id="main-content">
           {children}
         </main>
-        
+
         <CookieConsent />
       </body>
     </html>
