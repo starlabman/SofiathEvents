@@ -1,96 +1,108 @@
 'use client';
 
-import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, Filter } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, ChevronLeft, ChevronRight, Filter, Sparkles } from 'lucide-react';
 
 const galleryImages = [
   {
     id: 1,
-    src: '/api/placeholder/1200/800/34C6C2/0F172A?text=Dîner+de+gala',
-    alt: 'Dîner de gala — Sofiath Events',
+    src: '/api/placeholder/1200/800/F59E0B/FDFCFA?text=Mariage+Élégant',
+    alt: 'Mariage Élégant — Sofiath Events',
     ratio: '3:2',
-    category: 'Événements'
+    category: 'Mariages',
+    description: 'Cérémonie de mariage romantique avec décoration florale'
   },
   {
     id: 2,
-    src: '/api/placeholder/800/1000/FF6B6B/FFFFFF?text=Mariage+élégant',
-    alt: 'Mariage élégant — Sofiath Events',
+    src: '/api/placeholder/800/1000/EC4899/FFFFFF?text=Réception+Privée',
+    alt: 'Réception Privée — Sofiath Events',
     ratio: '4:5',
-    category: 'Mariages'
+    category: 'Événements',
+    description: 'Réception privée avec service traiteur premium'
   },
   {
     id: 3,
-    src: '/api/placeholder/1200/800/F4C95D/0F172A?text=Service+traiteur',
-    alt: 'Service traiteur premium — Sofiath Events',
+    src: '/api/placeholder/1200/800/F59E0B/FDFCFA?text=Service+Traiteur',
+    alt: 'Service Traiteur Premium — Sofiath Events',
     ratio: '3:2',
-    category: 'Gastronomie'
+    category: 'Gastronomie',
+    description: 'Buffet gastronomique avec présentation élégante'
   },
   {
     id: 4,
-    src: '/api/placeholder/800/1000/34C6C2/FFFFFF?text=Réception+entreprise',
-    alt: 'Réception d\'entreprise — Sofiath Events',
+    src: '/api/placeholder/800/1000/2D392D/FFFFFF?text=Événement+Corporate',
+    alt: 'Événement Corporate — Sofiath Events',
     ratio: '4:5',
-    category: 'Entreprise'
+    category: 'Entreprise',
+    description: 'Événement d\'entreprise professionnel'
   },
   {
     id: 5,
-    src: '/api/placeholder/1200/800/FF6B6B/0F172A?text=Anniversaire+chic',
-    alt: 'Anniversaire chic — Sofiath Events',
+    src: '/api/placeholder/1200/800/EC4899/FDFCFA?text=Anniversaire+Chic',
+    alt: 'Anniversaire Chic — Sofiath Events',
     ratio: '3:2',
-    category: 'Événements'
+    category: 'Événements',
+    description: 'Célébration d\'anniversaire élégante'
   },
   {
     id: 6,
-    src: '/api/placeholder/800/1000/F4C95D/FFFFFF?text=Décoration+florale',
-    alt: 'Décoration florale — Sofiath Events',
+    src: '/api/placeholder/800/1000/F59E0B/FFFFFF?text=Décoration+Florale',
+    alt: 'Décoration Florale — Sofiath Events',
     ratio: '4:5',
-    category: 'Décoration'
+    category: 'Décoration',
+    description: 'Arrangements floraux personnalisés'
   },
   {
     id: 7,
-    src: '/api/placeholder/1200/800/34C6C2/0F172A?text=Cérémonie+mariage',
-    alt: 'Cérémonie de mariage — Sofiath Events',
+    src: '/api/placeholder/1200/800/2D392D/FDFCFA?text=Cérémonie+Civil',
+    alt: 'Cérémonie Civile — Sofiath Events',
     ratio: '3:2',
-    category: 'Mariages'
+    category: 'Mariages',
+    description: 'Cérémonie civile intime et romantique'
   },
   {
     id: 8,
-    src: '/api/placeholder/800/1000/FF6B6B/FFFFFF?text=Buffet+gastronomique',
-    alt: 'Buffet gastronomique — Sofiath Events',
+    src: '/api/placeholder/800/1000/EC4899/FFFFFF?text=Cocktail+Dînatoire',
+    alt: 'Cocktail Dînatoire — Sofiath Events',
     ratio: '4:5',
-    category: 'Gastronomie'
+    category: 'Gastronomie',
+    description: 'Cocktail dînatoire avec canapés raffinés'
   },
   {
     id: 9,
-    src: '/api/placeholder/1200/800/F4C95D/0F172A?text=Événement+corporate',
-    alt: 'Événement corporate — Sofiath Events',
+    src: '/api/placeholder/1200/800/F59E0B/FDFCFA?text=Conférence+Entreprise',
+    alt: 'Conférence Entreprise — Sofiath Events',
     ratio: '3:2',
-    category: 'Entreprise'
+    category: 'Entreprise',
+    description: 'Conférence d\'entreprise avec service complet'
   },
   {
     id: 10,
-    src: '/api/placeholder/800/1000/34C6C2/FFFFFF?text=Réception+privée',
-    alt: 'Réception privée — Sofiath Events',
+    src: '/api/placeholder/800/1000/2D392D/FFFFFF?text=Gala+Charité',
+    alt: 'Gala de Charité — Sofiath Events',
     ratio: '4:5',
-    category: 'Événements'
+    category: 'Événements',
+    description: 'Gala de charité avec service premium'
   },
   {
     id: 11,
-    src: '/api/placeholder/1200/800/FF6B6B/0F172A?text=Déjeuner+affaires',
-    alt: 'Déjeuner d\'affaires — Sofiath Events',
+    src: '/api/placeholder/1200/800/EC4899/FDFCFA?text=Déjeuner+Affaires',
+    alt: 'Déjeuner d\'Affaires — Sofiath Events',
     ratio: '3:2',
-    category: 'Entreprise'
+    category: 'Entreprise',
+    description: 'Déjeuner d\'affaires professionnel'
   },
   {
     id: 12,
-    src: '/api/placeholder/800/1000/F4C95D/FFFFFF?text=Cocktail+dînatoire',
-    alt: 'Cocktail dînatoire — Sofiath Events',
+    src: '/api/placeholder/800/1000/F59E0B/FFFFFF?text=Pâtisseries+Artisanales',
+    alt: 'Pâtisseries Artisanales — Sofiath Events',
     ratio: '4:5',
-    category: 'Gastronomie'
+    category: 'Gastronomie',
+    description: 'Pâtisseries artisanales faites maison'
   }
 ];
 
-const categories = ['Tous', 'Événements', 'Mariages', 'Gastronomie', 'Entreprise', 'Décoration'];
+const categories = ['Tous', 'Mariages', 'Événements', 'Gastronomie', 'Entreprise', 'Décoration'];
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -130,28 +142,53 @@ const Gallery = () => {
     ? galleryImages 
     : galleryImages.filter(img => img.category === selectedCategory);
 
+  // Handle keyboard events for lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedImage !== null) {
+        if (e.key === 'Escape') {
+          closeLightbox();
+        } else if (e.key === 'ArrowRight') {
+          nextImage();
+        } else if (e.key === 'ArrowLeft') {
+          prevImage();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage, currentIndex, selectedCategory]);
+
+  // Handle click outside lightbox to close
+  const handleLightboxClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      closeLightbox();
+    }
+  };
+
   return (
-    <section id="gallery" className="py-24 bg-white relative overflow-hidden">
+    <section id="gallery" className="section-padding bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-10 right-10 w-96 h-96 bg-[#F4C95D]/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#34C6C2]/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 right-10 w-96 h-96 bg-gold-50 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-80 h-80 bg-rose-50 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container-elegant relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-[#FF6B6B]/10 border border-[#FF6B6B]/20 rounded-full px-6 py-3 mb-8">
-            <Filter className="w-5 h-5 text-[#FF6B6B]" />
-            <span className="text-[#FF6B6B] font-semibold">Notre Galerie</span>
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-gold-100 border border-gold-200 rounded-full px-6 py-3 mb-8">
+            <Filter className="w-5 h-5 text-gold-600" />
+            <span className="text-gold-700 font-semibold">Notre Galerie</span>
           </div>
-          <h2 className="text-4xl lg:text-6xl font-heading font-bold text-slate-900 mb-8">
+          <h2 className="text-4xl lg:text-6xl font-heading font-bold text-dark mb-8">
             Nos{' '}
-            <span className="bg-gradient-to-r from-[#FF6B6B] to-[#F4C95D] bg-clip-text text-transparent">
+            <span className="text-gradient-gold">
               Réalisations
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-sage-600 max-w-4xl mx-auto leading-relaxed font-elegant">
             Découvrez la magie de nos événements à travers une sélection de nos plus belles réalisations
           </p>
         </div>
@@ -164,8 +201,8 @@ const Gallery = () => {
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                 selectedCategory === category
-                  ? 'bg-gradient-to-r from-[#FF6B6B] to-[#FF6B6B]/90 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-lg'
+                  : 'bg-cream-100 text-sage-600 hover:bg-cream-200'
               }`}
             >
               {category}
@@ -190,13 +227,21 @@ const Gallery = () => {
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-6 left-6 right-6">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4">
-                      <h3 className="font-heading font-bold text-slate-900 mb-2">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4">
+                      <h3 className="font-heading font-bold text-dark mb-2">
                         {image.alt.split('—')[0]}
                       </h3>
-                      <p className="text-sm text-gray-600">{image.category}</p>
+                      <p className="text-sm text-sage-600 mb-2">{image.category}</p>
+                      <p className="text-xs text-sage-500">{image.description}</p>
                     </div>
                   </div>
+                </div>
+                
+                {/* Category badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="bg-white/90 backdrop-blur-sm text-dark text-xs font-medium px-3 py-1 rounded-full">
+                    {image.category}
+                  </span>
                 </div>
               </div>
             </div>
@@ -205,29 +250,35 @@ const Gallery = () => {
 
         {/* Lightbox */}
         {selectedImage !== null && (
-          <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div 
+            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+            onClick={handleLightboxClick}
+          >
             <div className="relative max-w-6xl max-h-full">
               {/* Close button */}
               <button
                 onClick={closeLightbox}
-                className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors duration-300 z-10"
+                className="absolute -top-12 right-0 text-white hover:text-gold-300 transition-colors duration-300 z-10 bg-black/50 rounded-full p-2"
+                aria-label="Fermer la galerie"
               >
-                <X className="w-8 h-8" />
+                <X className="w-6 h-6" />
               </button>
 
               {/* Navigation buttons */}
               <button
                 onClick={prevImage}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors duration-300 z-10"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gold-300 transition-colors duration-300 z-10 bg-black/50 rounded-full p-3"
+                aria-label="Image précédente"
               >
-                <ChevronLeft className="w-12 h-12" />
+                <ChevronLeft className="w-8 h-8" />
               </button>
 
               <button
                 onClick={nextImage}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors duration-300 z-10"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gold-300 transition-colors duration-300 z-10 bg-black/50 rounded-full p-3"
+                aria-label="Image suivante"
               >
-                <ChevronRight className="w-12 h-12" />
+                <ChevronRight className="w-8 h-8" />
               </button>
 
               {/* Image */}
@@ -238,11 +289,23 @@ const Gallery = () => {
               />
 
               {/* Image info */}
-              <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-2xl p-4">
-                <h3 className="font-heading font-bold text-slate-900 mb-2">
+              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm rounded-2xl p-6">
+                <h3 className="font-heading font-bold text-dark mb-2 text-xl">
                   {filteredImages[currentIndex].alt.split('—')[0]}
                 </h3>
-                <p className="text-sm text-gray-600">{filteredImages[currentIndex].category}</p>
+                <p className="text-sage-600 mb-2 font-medium">{filteredImages[currentIndex].category}</p>
+                <p className="text-sage-500 text-sm">{filteredImages[currentIndex].description}</p>
+                
+                {/* Image counter */}
+                <div className="flex items-center justify-between mt-4 pt-4 border-t border-cream-200">
+                  <span className="text-sm text-sage-500">
+                    {currentIndex + 1} / {filteredImages.length}
+                  </span>
+                  <div className="flex items-center gap-2 text-sage-500">
+                    <Sparkles className="w-4 h-4" />
+                    <span className="text-sm">Sofiath Events</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
