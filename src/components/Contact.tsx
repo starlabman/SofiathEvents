@@ -233,6 +233,7 @@ const Contact = () => {
                 {errors.message && (
                   <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
                 )}
+
               </div>
 
               <Button

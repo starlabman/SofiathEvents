@@ -22,6 +22,6 @@ export default function Home() {
       <Contact />
       <Footer />
       <CookieConsent />
-    </main>
+      </main>
   );
 }

@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://sofiath-events.com'),
+  metadataBase: new URL('https://sofiathevents.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: "Sofiath Events – Agence événementielle & traiteur premium",
     description: "Organisation d'événements, service traiteur, hôtesses d'accueil et location de couverts. Transformons vos moments en souvenirs inoubliables.",
-    url: 'https://sofiath-events.com',
+    url: 'https://sofiathevents.com',
     siteName: 'Sofiath Events',
     images: [
       {
@@ -79,13 +79,12 @@ export default function RootLayout({
         {/* Preload critical resources */}
         <link
           rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
           as="style"
-          onLoad="this.onload=null;this.rel='stylesheet'"
         />
         <noscript>
           <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
           />
         </noscript>
@@ -103,11 +102,11 @@ export default function RootLayout({
         </div>
         
         {/* Skip to content link for accessibility */}
-        {/* <a href="#main-content" className="skip-link">
+         {/* <a href="#main-content" className="skip-link">
           Aller au contenu principal
-        </a>  */}
+        </a> */}
 
-        {/* Google Analytics with consent management */}
+        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
           strategy="afterInteractive"
@@ -143,7 +142,7 @@ export default function RootLayout({
         <main id="main-content">
           {children}
         </main>
-        
+
         <CookieConsent />
       </body>
     </html>
