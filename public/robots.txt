@@ -2,7 +2,12 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://sofiath-events.com/sitemap.xml
+Sitemap: https://sofiathevents.com/sitemap.xml
 
-# Crawl-delay
+# Disallow admin and private areas
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Crawl-delay for respectful crawling
 Crawl-delay: 1

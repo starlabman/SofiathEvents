@@ -70,6 +70,15 @@
       ]
     },
     {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
       "source": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))",
       "headers": [
         {
@@ -98,21 +107,19 @@
   ],
   "rewrites": [
     {
-      "source": "/sitemap.xml",
-      "destination": "/api/sitemap"
-    },
-    {
-      "source": "/robots.txt",
-      "destination": "/api/robots"
+      "source": "/api/placeholder/(.*)",
+      "destination": "/api/placeholder/[...params]"
     }
   ],
   "functions": {
     "src/app/api/contact/route.ts": {
       "maxDuration": 10
+    },
+    "src/app/api/placeholder/[...params]/route.ts": {
+      "maxDuration": 5
     }
   },
   "env": {
-    "NEXT_PUBLIC_SITE_URL": "https://sofiathevents.com",
-    "NEXT_PUBLIC_GA_ID": "G-XXXXXXX"
+    "NODE_ENV": "production"
   }
 }

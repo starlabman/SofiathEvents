@@ -103,9 +103,9 @@ export default function RootLayout({
         </div>
         
         {/* Skip to content link for accessibility */}
-        <a href="#main-content" className="skip-link">
+        {/* <a href="#main-content" className="skip-link">
           Aller au contenu principal
-        </a>
+        </a>  */}
 
         {/* Google Analytics with consent management */}
         <Script
