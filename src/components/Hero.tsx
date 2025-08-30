@@ -33,7 +33,7 @@ const Hero = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
         <div className="max-w-5xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-8">
+          <div  aria-hidden="true" className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-8">
             <Sparkles className="w-5 h-5 text-[#F4C95D]" />
             <span className="text-white/90 font-medium">Agence événementielle premium</span>
           </div>

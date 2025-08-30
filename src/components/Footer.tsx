@@ -1,27 +1,27 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Facebook, Instagram, MessageCircle } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
 
 const Footer = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <footer className="bg-dark text-white">
-      {/* Liens cachés pour les tests automatisés */}
+      {/* Liens cachés pour l’accessibilité et les tests */}
       <div className="sr-only">
         <a href="tel:+22870154492">Téléphone principal</a>
         <a href="tel:+22898762081">Téléphone secondaire</a>
         <a href="https://wa.me/22898762081">WhatsApp secondaire</a>
         <a href="mailto:contact@sofiathevents.com">Email contact</a>
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo & Description */}
@@ -39,11 +39,11 @@ const Footer = () => {
                 L'art de sublimer vos moments
               </p>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                Transformons vos moments en souvenirs inoubliables. 
+                Transformons vos moments en souvenirs inoubliables.
                 Votre partenaire de confiance pour des événements d'exception.
               </p>
-              
-              {/* Social Media */}
+
+              {/* Réseaux sociaux */}
               <div className="flex space-x-4">
                 <motion.a
                   href="https://facebook.com/sofiathevents"
@@ -56,7 +56,7 @@ const Footer = () => {
                 >
                   <Facebook className="w-5 h-5" />
                 </motion.a>
-                
+
                 <motion.a
                   href="https://instagram.com/sofiathevents"
                   target="_blank"
@@ -68,7 +68,7 @@ const Footer = () => {
                 >
                   <Instagram className="w-5 h-5" />
                 </motion.a>
-                
+
                 <motion.a
                   href="https://wa.me/22870154492"
                   target="_blank"
@@ -84,7 +84,7 @@ const Footer = () => {
             </motion.div>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation rapide */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -97,7 +97,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <button
-                  onClick={() => scrollToSection('#services')}
+                  onClick={() => scrollToSection("#services")}
                   className="text-gray-300 hover:text-primary transition-colors duration-300"
                 >
                   Services
@@ -105,7 +105,7 @@ const Footer = () => {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection('#gallery')}
+                  onClick={() => scrollToSection("#gallery")}
                   className="text-gray-300 hover:text-primary transition-colors duration-300"
                 >
                   Galerie
@@ -113,7 +113,7 @@ const Footer = () => {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection('#testimonials')}
+                  onClick={() => scrollToSection("#testimonials")}
                   className="text-gray-300 hover:text-primary transition-colors duration-300"
                 >
                   Avis clients
@@ -121,7 +121,7 @@ const Footer = () => {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection('#contact')}
+                  onClick={() => scrollToSection("#contact")}
                   className="text-gray-300 hover:text-primary transition-colors duration-300"
                 >
                   Contact
@@ -130,16 +130,14 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Legal Links */}
+          {/* Liens légaux */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-heading font-semibold mb-4">
-              Légal
-            </h4>
+            <h4 className="text-lg font-heading font-semibold mb-4">Légal</h4>
             <ul className="space-y-3">
               <li>
                 <a
@@ -177,7 +175,7 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bas de page */}
         <motion.div
           className="border-t border-gray-700 mt-12 pt-8"
           initial={{ opacity: 0 }}
